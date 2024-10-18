@@ -97,28 +97,31 @@ Future<void> getIntelligence() async {
 4.	To update the Sign3Intelligence instance with optional parameters, including additional attributes, you can use the following examples.
 
 ```dart
+UpdateOptions getUpdatedOptions() {
+  Map<String, String> additionalAttributes = {
+    "TRANSACTION_ID": "<TRANSACTION_ID>",
+    "DEPOSIT": "<AMOUNT>",
+    "WITHDRAWAL": "<AMOUNT>",
+    "METHOD": "UPI/CARD/NET_BANKING/WALLET",
+    "STATUS": "SUCCESS/FAILURE",
+    "CURRENCY": "USD/INR/GBP/etc.",
+    "TIMESTAMP": DateTime.now().millisecondsSinceEpoch.toString(),
+  };
+
+  UpdateOptions updateOptions = UpdateOptionsBuilder()
+      .setPhoneNumber("6265257963")
+      .setUserId("123456")
+      .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
+      .setOtpInputType(OtpInputType.AUTO_FILLED)
+      .setUserEventType(UserEventType.TRANSACTION)
+      .setMerchantId("962328457268263")
+      .setAdditionalAttributes(additionalAttributes)
+      .build();
+  return updateOptions;
+}
+
 Future<void> updateOptions() async {
   try {
-    Map<String, String> additionalAttributes = {
-      "TRANSACTION_ID": "<TRANSACTION_ID>",
-      "DEPOSIT": "<AMOUNT>",
-      "WITHDRAWAL": "<AMOUNT>",
-      "METHOD": "UPI/CARD/NET_BANKING/WALLET",
-      "STATUS": "SUCCESS/FAILURE",
-      "CURRENCY": "USD/INR/GBP/etc.",
-      "TIMESTAMP": DateTime.now().millisecondsSinceEpoch.toString(),
-    };
-
-    UpdateOptions updateOptions = UpdateOptionsBuilder()
-        .setPhoneNumber("6265257963")
-        .setUserId("123456")
-        .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
-        .setOtpInputType(OtpInputType.AUTO_FILLED)
-        .setUserEventType(UserEventType.TRANSACTION)
-        .setMerchantId("962328457268263")
-        .setAdditionalAttributes(additionalAttributes)
-        .build();
-    
     await Sign3Intelligence.updateOptions(getUpdatedOptions());
   } catch (e) {
     // Handle the error message 
