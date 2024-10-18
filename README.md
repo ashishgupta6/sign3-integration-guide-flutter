@@ -1,55 +1,63 @@
-# Sign3 SDK Integration Guide
+# Sign3 SDK Integration Guide for Flutter
 
 The Sign3 SDK is a fraud prevention toolkit designed to assess device security, detecting potential risks such as rooted devices, VPN connections, or remote access, and much more. By providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system.
 
-## Create a .env file
+## Adding Sign3SDK to Your Project
+
+### Add the latest version to your `pubspec.yaml` file.
+1. We continuously enhance our fraud library with new features, bug fixes, and security updates. To stay protected against evolving fraud risks, we recommend updating to the latest SDK version.
+   - Visit [latest_version](https://pub.dev/packages/fraud_sdk_flutter) for the latest version and check the Changelog for more details.
+
+     ```dependency
+     flutter_sign3fraud: ^1.0.13
+     ```
+
+### Create `.env` file
 
 1. In the root directory of your Flutter project, create a .env file.
-2. Add the following content to the .env file:
-
-``` credential
-SIGN3_USERNAME=provided in credential doc
-SIGN3_PASSWORD=provided in credential doc
-SIGN3_REPO_URL=https://sign3.jfrog.io/artifactory/intelligence-test-local/
- ```
-
-## Adding Sign3SDK to Your Project
+   - Add the following content to the .env file:
+     
+     ``` credential
+     SIGN3_USERNAME=provided in credential doc
+     SIGN3_PASSWORD=provided in credential doc
+     SIGN3_REPO_URL=https://sign3.jfrog.io/artifactory/intelligence-test-local/
+      ```
 
 ### Using Project Level Gradle Dependency
 1. **Add Sign3SDK to the Dependency Block**
-   - In the android folder of your Flutter project, open the project-level `build.gradle` file and add the following line. You can collect the **username** and **password** from the credentials document.
+   - In the Android folder of your Flutter project, open the project-level `build.gradle` file, add the following line, and sync the project. You can collect the **username** and **password** from the credentials document.
 
-```groovy
-def envProperties = new Properties()
-def envFile = rootProject.file("../.env")
-if (envFile.exists()) {
-    envFile.withInputStream { stream ->
-        envProperties.load(stream)
-    }
-    println ".env file loaded successfully."
-} else {
-    println "Error: .env file not found."
-}
-
-allprojects {
-   repositories {
-       def repositoryUrl = envProperties['SIGN3_REPO_URL'] ?: ""
-       def username = envProperties['SIGN3_USERNAME'] ?: ""
-       def password = envProperties['SIGN3_PASSWORD'] ?: ""
-       if (!repositoryUrl.isEmpty() && repositoryUrl.startsWith("https://") && !repositoryUsername.isEmpty() && !repositoryPassword.isEmpty()) {
-           maven {
-               url repositoryUrl
-               credentials {
-                   username = username
-                   password = password
-               }
-           }
-       } else {
-           println "Error: Invalid repository URL or missing credentials in .env file."
-       }
-   }
-}
-```
+     ```groovy
+     def envProperties = new Properties()
+     def envFile = rootProject.file("../.env")
+     if (envFile.exists()) {
+         envFile.withInputStream { stream ->
+             envProperties.load(stream)
+         }
+         println ".env file loaded successfully."
+     } else {
+         println "Error: .env file not found."
+     }
+     
+     allprojects {
+        repositories {
+            def repositoryUrl = envProperties['SIGN3_REPO_URL'] ?: ""
+            def username = envProperties['SIGN3_USERNAME'] ?: ""
+            def password = envProperties['SIGN3_PASSWORD'] ?: ""
+            if (!repositoryUrl.isEmpty() && repositoryUrl.startsWith("https://") && !repositoryUsername.isEmpty() && !repositoryPassword.isEmpty()) {
+                maven {
+                    url repositoryUrl
+                    credentials {
+                        username = username
+                        password = password
+                    }
+                }
+            } else {
+                println "Error: Invalid repository URL or missing credentials in .env file."
+            }
+        }
+     }
+     ```
 <br>
 
 ## Initializing the SDK
