@@ -17,7 +17,7 @@ SIGN3_REPO_URL=https://sign3.jfrog.io/artifactory/intelligence-test-local/
 
 ### Using Project Level Gradle Dependency
 1. **Add Sign3SDK to the Dependency Block**
-   - In the android folder of your Flutter project, open the project-level `build.gradle` file and add the following line to the dependencies block. You can collect the **username** and **password** from the credentials document.
+   - In the android folder of your Flutter project, open the project-level `build.gradle` file and add the following line. You can collect the **username** and **password** from the credentials document.
 
 ```groovy
 def envProperties = new Properties()
