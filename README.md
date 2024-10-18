@@ -8,9 +8,9 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
 2. Add the following content to the .env file:
 
 ``` credential
-REPO_USERNAME=provided in credential doc
-REPO_PASSWORD=provided in credential doc
-REPO_URL=https://sign3.jfrog.io/artifactory/intelligence-test-local/
+SIGN3_USERNAME=provided in credential doc
+SIGN3_PASSWORD=provided in credential doc
+SIGN3_REPO_URL=https://sign3.jfrog.io/artifactory/intelligence-test-local/
  ```
 
 ## Adding Sign3SDK to Your Project
@@ -33,9 +33,9 @@ if (envFile.exists()) {
 
 allprojects {
    repositories {
-       def repositoryUrl = envProperties['REPO_URL'] ?: ""
-       def username = envProperties['REPO_USERNAME'] ?: ""
-       def password = envProperties['REPO_PASSWORD'] ?: ""
+       def repositoryUrl = envProperties['SIGN3_REPO_URL'] ?: ""
+       def username = envProperties['SIGN3_USERNAME'] ?: ""
+       def password = envProperties['SIGN3_PASSWORD'] ?: ""
        if (!repositoryUrl.isEmpty() && repositoryUrl.startsWith("https://") && !repositoryUsername.isEmpty() && !repositoryPassword.isEmpty()) {
            maven {
                url repositoryUrl
