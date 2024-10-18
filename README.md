@@ -15,17 +15,17 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
 
 ### Create `.env` file
 
-1. In the root directory of your Flutter project, create a .env file.
-   - Add the following content to the .env file:
+1. In the root directory of your Flutter project, create a .env file
+   - Add the following content to the `.env` file:
      
      ``` credential
      SIGN3_USERNAME=provided in credential doc
      SIGN3_PASSWORD=provided in credential doc
-     SIGN3_REPO_URL=https://sign3.jfrog.io/artifactory/intelligence-test-local/
+     SIGN3_REPO_URL=https://sign3.jfrog.io/artifactory/intelligence-generic-local/
       ```
 
 ### Using Project Level Gradle Dependency
-1. **Add Sign3SDK to the Dependency Block**
+1. **Add Sign3 SDK to the Dependency Block**
    - In the Android folder of your Flutter project, open the project-level `build.gradle` file, add the following line, and sync the project. You can collect the **username** and **password** from the credentials document.
 
      ```groovy
@@ -42,15 +42,15 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
      
      allprojects {
         repositories {
-            def repositoryUrl = envProperties['SIGN3_REPO_URL'] ?: ""
-            def username = envProperties['SIGN3_USERNAME'] ?: ""
-            def password = envProperties['SIGN3_PASSWORD'] ?: ""
-            if (!repositoryUrl.isEmpty() && repositoryUrl.startsWith("https://") && !repositoryUsername.isEmpty() && !repositoryPassword.isEmpty()) {
+            def sign3RepoUrl = envProperties['SIGN3_REPO_URL'] ?: ""
+            def sign3Username = envProperties['SIGN3_USERNAME'] ?: ""
+            def sign3Password = envProperties['SIGN3_PASSWORD'] ?: ""
+            if (!sign3RepoUrl.isEmpty() && sign3RepoUrl.startsWith("https://") && !sign3Username.isEmpty() && !sign3Password.isEmpty()) {
                 maven {
-                    url repositoryUrl
+                    url sign3RepoUrl
                     credentials {
-                        username = username
-                        password = password
+                        username = sign3Username
+                        password = sign3Password
                     }
                 }
             } else {
