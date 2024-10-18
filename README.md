@@ -2,7 +2,7 @@
 
 The Sign3 SDK is a fraud prevention toolkit designed to assess device security, detecting potential risks such as rooted devices, VPN connections, or remote access, and much more. By providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system.
 
-## Adding Sign3SDK to Your Project
+## Adding Sign3 SDK to Your Project
 
 ### Add the latest version to your `pubspec.yaml` file.
 1. We continuously enhance our fraud library with new features, bug fixes, and security updates. To stay protected against evolving fraud risks, we recommend updating to the latest SDK version.
