@@ -9,7 +9,8 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
    - Visit [latest_version](https://pub.dev/packages/fraud_sdk_flutter) for the latest version and check the Changelog for more details.
 
      ```dependency
-     flutter_sign3fraud: ^1.0.13
+     dependencies:
+       flutter_sign3fraud: ^1.0.13
      ```
 
 ### Create `.env` file
