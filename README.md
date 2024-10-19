@@ -118,12 +118,12 @@ UpdateOptions getUpdatedOptions() {
   };
 
   UpdateOptions updateOptions = UpdateOptionsBuilder()
-      .setPhoneNumber("6265257963")
-      .setUserId("123456")
+      .setPhoneNumber("<phone_number>")
+      .setUserId("<user_id>")
       .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
       .setOtpInputType(OtpInputType.AUTO_FILLED)
       .setUserEventType(UserEventType.TRANSACTION)
-      .setMerchantId("962328457268263")
+      .setMerchantId("<merchant_id>")
       .setAdditionalAttributes(additionalAttributes)
       .build();
   return updateOptions;
