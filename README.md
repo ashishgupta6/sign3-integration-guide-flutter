@@ -10,7 +10,7 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
 
      ```dependency
      dependencies:
-       flutter_sign3fraud: ^1.0.13
+       flutter_sign3fraud: ^1.0.19
      ```
 
 ### Create `.env` file
@@ -62,8 +62,69 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
 <br>
 
 ## Initializing the SDK
-1. Initialize the SDK in the `onCreate()` method of your Application class.
+1. Create an `Application` class in the Android folder of your Flutter project, initialize the Sign3 SDK in the `onCreate()` method of the class, and add the Application class to your `AndroidManifest.xml` file.
 2. Use the ClientID and Client Secret shared with the credentials document.
+
+### For Java
+```java
+import io.flutter.app.FlutterApplication;
+import android.os.Build;
+import com.sign3.intelligence.fraud_sdk_flutter.OptionsBuilder;
+import com.sign3.intelligence.fraud_sdk_flutter.Sign3IntelligencePlugin;
+
+public class YourApplicationClassName extends FlutterApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Sign3IntelligencePlugin sign3IntelligencePlugin = new Sign3IntelligencePlugin();
+            if (sign3IntelligencePlugin.stop()) return;
+            OptionsBuilder.INSTANCE.build(
+                    "test_tenant",
+                    "secret-295OzNJj9L3nVUWQq56ACCN6f6zUiYGQlN8G7256",
+                    OptionsBuilder.ENV_DEV);
+            sign3IntelligencePlugin.initAsync(this);
+        }
+    }
+}
+```
+
+### For Kotlin
+```kotlin
+import android.os.Build
+import com.sign3.intelligence.fraud_sdk_flutter.OptionsBuilder
+import com.sign3.intelligence.fraud_sdk_flutter.Sign3IntelligencePlugin
+import io.flutter.app.FlutterApplication
+
+class YourApplicationClassName : FlutterApplication() {
+    override fun onCreate() {
+        super.onCreate()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val sign3IntelligencePlugin = Sign3IntelligencePlugin()
+            if (sign3IntelligencePlugin.stop()) return
+            OptionsBuilder.build(
+                clientId = "test_tenant",
+                secret = "secret-295OzNJj9L3nVUWQq56ACCN6f6zUiYGQlN8G7256",
+                env = OptionsBuilder.ENV_DEV
+            )
+            sign3IntelligencePlugin.initAsync(this)
+        }
+    }
+}
+```
+
+### For AndroidManifest.xml
+``` android menifest
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:name=".YourApplicationClassName"
+        android:label="YourAppName"
+        android:icon="@mipmap/ic_launcher">
+        <!-- Add other components like activities here -->
+    </application>
+
+</manifest>
+```
 <br>
 
 ## Get Session ID
