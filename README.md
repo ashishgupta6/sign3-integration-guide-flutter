@@ -80,9 +80,9 @@ public class YourApplicationClassName extends FlutterApplication {
             Sign3IntelligencePlugin sign3IntelligencePlugin = new Sign3IntelligencePlugin();
             if (sign3IntelligencePlugin.stop()) return;
             OptionsBuilder.INSTANCE.build(
-                    "test_tenant",
-                    "secret-295OzNJj9L3nVUWQq56ACCN6f6zUiYGQlN8G7256",
-                    OptionsBuilder.ENV_DEV);
+                    "<SIGN3_CLIENT_ID>",
+                    "<SIGN3_CLIENT_SECRET>",
+                    OptionsBuilder.ENV_DEV); // For Prod: Options.ENV_PROD, For Dev: Options.ENV_DEV
             sign3IntelligencePlugin.initAsync(this);
         }
     }
@@ -103,9 +103,9 @@ class YourApplicationClassName : FlutterApplication() {
             val sign3IntelligencePlugin = Sign3IntelligencePlugin()
             if (sign3IntelligencePlugin.stop()) return
             OptionsBuilder.build(
-                clientId = "test_tenant",
-                secret = "secret-295OzNJj9L3nVUWQq56ACCN6f6zUiYGQlN8G7256",
-                env = OptionsBuilder.ENV_DEV
+                clientId = "<SIGN3_CLIENT_ID>",
+                secret = "<SIGN3_CLIENT_SECRET>",
+                env = OptionsBuilder.ENV_DEV  // For Prod: Options.ENV_PROD, For Dev: Options.ENV_DEV
             )
             sign3IntelligencePlugin.initAsync(this)
         }
