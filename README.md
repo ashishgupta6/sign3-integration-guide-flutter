@@ -63,7 +63,10 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
 
 ## Initializing the SDK
 1. Create an `Application` class in the Android folder of your Flutter project, initialize the Sign3 SDK in the `onCreate()` method of the class, and add the Application class to your `AndroidManifest.xml` file.
-2. Use the ClientID and Client Secret shared with the credentials document.
+2. This SDK needs 2 required permissions for Android to achieve higher accuracy. 
+   - ACCESS_FINE_LOCATION
+   - READ_PHONE_STATE
+3. Use the ClientID and Client Secret shared with the credentials document.
 
 ### For Java
 ```java
@@ -124,19 +127,6 @@ class YourApplicationClassName : FlutterApplication() {
     </application>
 
 </manifest>
-```
-
-## App Permission
-   1. Add the following permissions in the Manifest file in the Android folder.
-   2. Optional permissions are recommended to achieve higher accuracy.
-
-```java
-<uses-permission android:name="android.permission.INTERNET" />
-<!-- optional -->
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<!-- Below mentioned optional permissions are taken to calculate sim information to the device  -->
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
 <br>
 
