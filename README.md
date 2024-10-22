@@ -125,6 +125,19 @@ class YourApplicationClassName : FlutterApplication() {
 
 </manifest>
 ```
+
+## App Permission
+   1. Add the following permissions in the Manifest file in the Android folder.
+   2. Optional permissions are recommended to achieve higher accuracy.
+
+```java
+<uses-permission android:name="android.permission.INTERNET" />
+<!-- optional -->
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<!-- Below mentioned optional permissions are taken to calculate sim information to the device  -->
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+```
 <br>
 
 ## Get Session ID
@@ -134,11 +147,7 @@ class YourApplicationClassName : FlutterApplication() {
  
  ```dart
 Future<void> getSessionID() async {
-  try {
-    var sessionId = await Sign3Intelligence.getSessionId();
-  } catch (e) {
-    // Handle the error message 
-  }
+  var sessionId = await Sign3Intelligence.getSessionId();
 }
 ```
 <br>
@@ -191,11 +200,7 @@ UpdateOptions getUpdatedOptions() {
 }
 
 Future<void> updateOptions() async {
-  try {
-    await Sign3Intelligence.updateOptions(getUpdatedOptions());
-  } catch (e) {
-    // Handle the error message 
-  }
+  await Sign3Intelligence.updateOptions(getUpdatedOptions());
 }
 
 Future<void> getIntelligence() async {
