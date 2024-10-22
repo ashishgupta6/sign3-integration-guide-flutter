@@ -10,7 +10,7 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
 
      ```dependency
      dependencies:
-       flutter_sign3fraud: ^1.0.19
+       flutter_intelligence_sign3: ^0.0.2
      ```
 
 ### Create `.env` file
@@ -75,7 +75,7 @@ import android.os.Build;
 import com.sign3.intelligence.fraud_sdk_flutter.OptionsBuilder;
 import com.sign3.intelligence.fraud_sdk_flutter.Sign3IntelligencePlugin;
 
-public class YourApplicationClassName extends FlutterApplication {
+public class MyApplication extends FlutterApplication {
     @Override
     public void onCreate() {
         super.onCreate();
@@ -99,7 +99,7 @@ import com.sign3.intelligence.fraud_sdk_flutter.OptionsBuilder
 import com.sign3.intelligence.fraud_sdk_flutter.Sign3IntelligencePlugin
 import io.flutter.app.FlutterApplication
 
-class YourApplicationClassName : FlutterApplication() {
+class MyApplication : FlutterApplication() {
     override fun onCreate() {
         super.onCreate()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -120,7 +120,7 @@ class YourApplicationClassName : FlutterApplication() {
 ``` android menifest
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:name=".YourApplicationClassName"
+        android:name=".MyApplication"
         android:label="YourAppName"
         android:icon="@mipmap/ic_launcher">
         <!-- Add other components like activities here -->
@@ -159,7 +159,7 @@ Future<void> getIntelligence() async {
 ```
 <br>
 
-## Optional Parameters
+## Optional
 1.	You can add optional parameters like UserId, Phone Number, etc., at any time and update the instance of Sign3Intelligence.
 2.	Once the options are updated, they get reset. Clients need to explicitly update the options again to ingest them, or else the default value of OTHERS in userEventType will be sent to the backend.
 3.	You need to call **getIntelligence()** function whenever you update the options.
