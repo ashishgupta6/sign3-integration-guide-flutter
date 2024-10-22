@@ -6,11 +6,11 @@ The Sign3 SDK is a fraud prevention toolkit designed to assess device security, 
 
 ### Add the latest version to your `pubspec.yaml` file.
 1. We continuously enhance our fraud library with new features, bug fixes, and security updates. To stay protected against evolving fraud risks, we recommend updating to the latest SDK version.
-   - Visit [latest_version](https://pub.dev/packages/fraud_sdk_flutter) for the latest version and check the Changelog for more details.
+   - Visit [latest_version](https://pub.dev/packages/flutter_intelligence_sign3) for the latest version and check the Changelog for more details.
 
      ```dependency
      dependencies:
-       flutter_intelligence_sign3: ^0.0.2
+       flutter_intelligence_sign3: ^0.0.3
      ```
 
 ### Create `.env` file
@@ -120,12 +120,9 @@ class MyApplication : FlutterApplication() {
 ``` android menifest
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:name=".MyApplication"
-        android:label="YourAppName"
-        android:icon="@mipmap/ic_launcher">
+        android:name=".MyApplication">
         <!-- Add other components like activities here -->
     </application>
-
 </manifest>
 ```
 <br>
